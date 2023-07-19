@@ -29,6 +29,11 @@ var solution = [
 window.onload = function () {
   setGame();
 };
+window.onload = function() {
+  setGame();
+  document.getElementById("SOLVE").addEventListener("click", solveSudoku);
+};
+
 
 function setGame() {
   // Digits 1-9
@@ -91,3 +96,19 @@ function selectTile() {
     }
   }
 }
+
+function solveSudoku() {
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      let tile = document.getElementById(r.toString() + "-" + c.toString());
+      if (tile.innerText === "") {
+        tile.innerText = solution[r][c];
+        tile.classList.add("solved"); 
+        // added this above line for solution when we press SOLVE button
+      }
+    }
+  }
+}
+
+document.getElementById("SOLVE").addEventListener("click", solveSudoku);
+// When we press SOLVE button solution will be appeared
